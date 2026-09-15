@@ -6,20 +6,19 @@ using namespace std;
 class Rook
 {
 private:
-	int row;
-	int column;
-	bool isBlack;
+	
+	bool esNegro;
 
-		bool validateMovement(int newRow, int newCol)
+		bool validateMovement(int newFil, int newCol)
 	{
 		
-		if (newCol == column && newRow != row)
+		if (newCol == columna && newFil != fila)
 		{
 			return true;
 		}
 
 		
-		if (newRow == row && newCol != column)
+		if (newFil == fila && newCol != columna)
 		{
 			return true;
 		}
@@ -29,39 +28,40 @@ private:
 	}
 
 public:
-
+	short fila;
+	short columna;
 	
 	Rook(bool black, int initialRow, int initialColumn)
 	{
-		isBlack = black;
-		row = initialRow;
-		column = initialColumn;
+		esNegro = black;
+		fila = initialRow;
+		columna = initialColumn;
 	}
 
 	
 
-	int getRow()
+	int getFila()
 	{
-		return row;
+		return fila;
 	}
 
-	int getColumn()
+	int getColumna()
 	{
-		return column;
+		return columna;
 	}
 
-	bool getIsBlack()
+	bool getEsNegro()
 	{
-		return isBlack;
+		return esNegro;
 	}
 
 	
 
-	void setRow(int newRow)
+	void setFila(int newFila)
 	{
-		if (newRow >= 1 && newRow <= 8)
+		if (newFila >= 1 && newFila <= 8)
 		{
-			row = newRow;
+			fila = newFila;
 		}
 		else
 		{
@@ -70,11 +70,11 @@ public:
 		}
 	}
 
-	void setColumn(int newColumn)
+	void setColumn(int newColumna)
 	{
-		if (newColumn >= 1 && newColumn <= 8)
+		if (newColumna >= 1 && newColumna <= 8)
 		{
-			column = newColumn;
+			columna = newColumna;
 		}
 		else
 		{
@@ -83,18 +83,18 @@ public:
 		}
 	}
 
-	void setIsBlack(bool black)
+	void setEsNegro(bool Negro)
 	{
-		isBlack = black;
+		esNegro = Negro;
 	}
 
 	
 
-	bool move(int newRow, int newCol)
+	bool move(int newFila, int newColumna)
 	{
 		
-		if (newRow < 1 || newRow > 8 ||
-			newCol < 1 || newCol > 8)
+		if (newFila < 1 || newFila > 8 ||
+			newColumna < 1 || newColumna > 8)
 		{
 			cout << "Error: la posicion debe estar entre 1 y 8."
 				<< endl;
@@ -103,10 +103,10 @@ public:
 		}
 
 		
-		if (validateMovement(newRow, newCol))
+		if (validateMovement(newFila, newColumna))
 		{
-			row = newRow;
-			column = newCol;
+			fila = newFila;
+			columna = newColumna;
 
 			cout << "Movimiento valido." << endl;
 
@@ -126,7 +126,7 @@ public:
 
 	string draw()
 	{
-		if (isBlack)
+		if (esNegro)
 		{
 			return "[##]";
 		}
@@ -142,7 +142,7 @@ public:
 	{
 		cout << draw();
 
-		if (isBlack)
+		if (esNegro)
 		{
 			cout << " Black";
 		}
@@ -151,8 +151,8 @@ public:
 			cout << " White";
 		}
 
-		cout << " at Row: " << row
-			<< ", Col: " << column << endl;
+		cout << " at Row: " << fila
+			<< ", Col: " << columna << endl;
 	}
 };
 
