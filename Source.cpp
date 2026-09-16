@@ -3,7 +3,7 @@
 
 using namespace std;
 
-class Rook
+class Torre
 {
 private:
 	
@@ -31,7 +31,7 @@ public:
 	short fila;
 	short columna;
 	
-	Rook(bool black, int initialRow, int initialColumn)
+	Torre(bool black, int initialRow, int initialColumn)
 	{
 		esNegro = black;
 		fila = initialRow;
@@ -160,8 +160,8 @@ public:
 int main()
 {
 	
-	Rook whiteRook(false, 1, 1);
-	Rook blackRook(true, 8, 8);
+	Torre whiteRook(false, 1, 1);
+	Torre blackRook(true, 8, 8);
 
 	cout << "===== ESTADO INICIAL =====" << endl;
 
